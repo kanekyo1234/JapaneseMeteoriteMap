@@ -1,2 +1,0 @@
-(this["webpackJsonpreact-tutorial"]=this["webpackJsonpreact-tutorial"]||[]).push([[0],{3:function(e,t,n){e.exports=n(9)},9:function(e,t,n){"use strict";n.r(t);var r=n(0),c=n.n(r),a=n(1),l=function(){return c.a.createElement("div",null,c.a.createElement("p",null,"\u3068\u308a\u3042\u3048\u305a\u4f5c\u3063\u3068\u3044\u305f\uff01\uff01"),c.a.createElement("p",null,"ghjk"))};n(8);Object(a.render)(c.a.createElement(l,null),document.querySelector("#content"))}},[[3,1,2]]]);
-//# sourceMappingURL=main.3d0e4ac1.chunk.js.map
