@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d874499f4ee0fdee0c7217c1398463df",
+    "revision": "cc12ba804b4c4a9c6a944b7ed2f50066",
     "url": "/SVG-tutorial/index.html"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/SVG-tutorial/static/js/2.30bfc1d3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8942f9de50c59e6e084a",
-    "url": "/SVG-tutorial/static/js/main.733391c5.chunk.js"
+    "revision": "90a75fc0cbe995d1541d",
+    "url": "/SVG-tutorial/static/js/main.d4620a21.chunk.js"
   },
   {
     "revision": "8a7d0627cdbadb929706",

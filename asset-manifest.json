@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/SVG-tutorial/static/js/main.733391c5.chunk.js",
-    "main.js.map": "/SVG-tutorial/static/js/main.733391c5.chunk.js.map",
+    "main.js": "/SVG-tutorial/static/js/main.d4620a21.chunk.js",
+    "main.js.map": "/SVG-tutorial/static/js/main.d4620a21.chunk.js.map",
     "runtime-main.js": "/SVG-tutorial/static/js/runtime-main.125349d2.js",
     "runtime-main.js.map": "/SVG-tutorial/static/js/runtime-main.125349d2.js.map",
     "static/css/2.0c0672e5.chunk.css": "/SVG-tutorial/static/css/2.0c0672e5.chunk.css",
     "static/js/2.30bfc1d3.chunk.js": "/SVG-tutorial/static/js/2.30bfc1d3.chunk.js",
     "static/js/2.30bfc1d3.chunk.js.map": "/SVG-tutorial/static/js/2.30bfc1d3.chunk.js.map",
     "index.html": "/SVG-tutorial/index.html",
-    "precache-manifest.4665f522d82b53b57e481adcb22a60d3.js": "/SVG-tutorial/precache-manifest.4665f522d82b53b57e481adcb22a60d3.js",
+    "precache-manifest.7254706ad1b769bc883e631537ac2061.js": "/SVG-tutorial/precache-manifest.7254706ad1b769bc883e631537ac2061.js",
     "service-worker.js": "/SVG-tutorial/service-worker.js",
     "static/css/2.0c0672e5.chunk.css.map": "/SVG-tutorial/static/css/2.0c0672e5.chunk.css.map",
     "static/js/2.30bfc1d3.chunk.js.LICENSE.txt": "/SVG-tutorial/static/js/2.30bfc1d3.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.125349d2.js",
     "static/css/2.0c0672e5.chunk.css",
     "static/js/2.30bfc1d3.chunk.js",
-    "static/js/main.733391c5.chunk.js"
+    "static/js/main.d4620a21.chunk.js"
   ]
 }
