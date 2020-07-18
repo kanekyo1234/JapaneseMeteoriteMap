@@ -1,2 +1,0 @@
-(this["webpackJsonpsvg-tutorial"]=this["webpackJsonpsvg-tutorial"]||[]).push([[0],{3:function(e,t,n){e.exports=n(9)},9:function(e,t,n){"use strict";n.r(t);var r=n(0),u=n.n(r),l=n(1),a=function(){return u.a.createElement("div",null,u.a.createElement("p",null,"\u3068\u308a\u3042\u3048\u305a\u4f5c\u3063\u3068\u3044ouehuahef\u305f\uff01\uff01"),u.a.createElement("p",null,"ghjk"))};n(8);Object(l.render)(u.a.createElement(a,null),document.querySelector("#content"))}},[[3,1,2]]]);
-//# sourceMappingURL=main.d4620a21.chunk.js.map
