@@ -5,7 +5,7 @@ const App = () => {
   return (
     <div>
       <p>とりあえず作っといた！！</p>
-      <p>ghjk</p>
+      <p>ghjkh</p>
     </div>
   );
 };
