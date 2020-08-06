@@ -3,6 +3,7 @@ import * as d3 from "d3";
 import * as topojson from "topojson";
 
 const ChoroplethMap = ({ features }) => {
+  console.log("WSDFGHJ");
   const width = 960;
   const height = 500;
 
@@ -13,7 +14,7 @@ const ChoroplethMap = ({ features }) => {
     .scaleLinear()
     .domain(d3.extent(features, (feature) => feature.properties.value))
     .range(["#ccc", "#f00"]);
-
+  console.log("DFGH");
   return (
     <svg width={width} height={height}>
       <g>
@@ -33,16 +34,14 @@ const ChoroplethMap = ({ features }) => {
 export const ChoroplethMapPage = () => {
   const [features, setFeatures] = useState(null);
   useEffect(() => {
+    console.log("DFGHJKL");
     (async () => {
-      const response = await fetch("/data/japan.json");
-      const data = await response.json();
+      const res = await fetch(`${process.env.PUBLIC_URL}/data/japan.json`);
+      const data = await res.json();
       const { features } = topojson.feature(data, data.objects.japan);
-
       setFeatures(features);
     })();
   }, []);
-  //   console.log(response);
-  //   console.log(data);
   console.log(features);
 
   if (features == null) {
