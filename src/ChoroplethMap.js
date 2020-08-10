@@ -3,7 +3,6 @@ import * as d3 from "d3";
 import * as topojson from "topojson";
 
 const ChoroplethMap = ({ features }) => {
-  console.log("WSDFGHJ");
   const width = 960;
   const height = 500;
 
@@ -14,7 +13,7 @@ const ChoroplethMap = ({ features }) => {
     .scaleLinear()
     .domain(d3.extent(features, (feature) => feature.properties.value))
     .range(["#ccc", "#f00"]);
-  console.log("DFGH");
+
   return (
     <svg width={width} height={height}>
       <g>
