@@ -27,8 +27,6 @@ const ChoroplethMap = ({ features }) => {
     return weight
   }
 
-
-
   return (
     <svg width={width} height={height}>
       <g>
