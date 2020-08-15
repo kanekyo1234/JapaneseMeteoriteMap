@@ -1,20 +1,34 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
 import * as topojson from "topojson";
+import Jsondata from "./output.json"
 
 const ChoroplethMap = ({ features }) => {
-  console.log("WSDFGHJ");
-  const width = 960;
-  const height = 500;
+  const width = 1060;
+  const height = 700;
 
-  const projection = d3.geoMercator().scale(1000).center([139.69167, 35.68944]);
+  const datas = Jsondata;
+
+  const projection = d3.geoMercator().scale(2000).center([129.69167, 40.68944]);
   const path = d3.geoPath().projection(projection);
 
   const color = d3
     .scaleLinear()
     .domain(d3.extent(features, (feature) => feature.properties.value))
     .range(["#ccc", "#f00"]);
-  console.log("DFGH");
+  const calcR = (weight) => {
+    if(isNaN(Number(weight))){
+      console.log(Number(weight))
+      return "10"
+    }
+    if(weight < 1){
+      return "5"
+    }
+    return weight
+  }
+
+
+
   return (
     <svg width={width} height={height}>
       <g>
@@ -22,10 +36,16 @@ const ChoroplethMap = ({ features }) => {
           <path
             key={i}
             d={path(feature)}
-            fill={color(feature.properties.value)}
+            fill="#008000"
             stroke="white"
           />
         ))}
+        {datas.map((data,i) => {
+          const x = projection([data.経度,data.緯度])[0];
+          const y = projection([data.経度,data.緯度])[1];
+          return (
+            <circle cx={x} cy={y} r={calcR(data["総重量 (kg)"])} fill="black"/>)
+        })}
       </g>
     </svg>
   );
@@ -34,7 +54,6 @@ const ChoroplethMap = ({ features }) => {
 export const ChoroplethMapPage = () => {
   const [features, setFeatures] = useState(null);
   useEffect(() => {
-    console.log("DFGHJKL");
     (async () => {
       const res = await fetch(`${process.env.PUBLIC_URL}/data/japan.json`);
       const data = await res.json();
@@ -42,7 +61,6 @@ export const ChoroplethMapPage = () => {
       setFeatures(features);
     })();
   }, []);
-  console.log(features);
 
   if (features == null) {
     return <p>loading</p>;
