@@ -13,7 +13,7 @@ const ChoroplethMap = ({ features }) => {
   const color = d3
     .scaleLinear()
     .domain(d3.extent(features, (feature) => feature.properties.value))
-    .range(["#ccc", "#f00"]);
+    .range(["#ccc", "#33CC66"]);
   console.log("DFGH");
   return (
     <svg width={width} height={height}>
@@ -22,7 +22,7 @@ const ChoroplethMap = ({ features }) => {
           <path
             key={i}
             d={path(feature)}
-            fill={color(feature.properties.value)}
+            fill={color(5000)}
             stroke="white"
           />
         ))}
@@ -49,3 +49,5 @@ export const ChoroplethMapPage = () => {
   }
   return <ChoroplethMap features={features} />;
 };
+
+export default ChoroplethMap;
