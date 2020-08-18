@@ -4,17 +4,18 @@ import * as topojson from "topojson";
 import Jsondata from "./output.json"
 
 const ChoroplethMap = ({ features }) => {
-  const width = 1060/2;
-  const height = 700/2;
+  const width = 1060;
+  const height = 700;
   const standardScale = 2000
   const datas = Jsondata;
 
-  const projection = d3.geoMercator().scale(standardScale/4).center([179.69167, 25.68944]);
+  const projection = d3.geoMercator().scale(standardScale).center([129.69167, 40.68944]);
   const path = d3.geoPath().projection(projection);
 
   const color = d3
     .scaleLinear()
     .domain(d3.extent(features, (feature) => feature.properties.value))
+
     .range(["#ccc", "#f00"]);
   const calcR = (weight) => {
     if(isNaN(Number(weight))){
@@ -41,14 +42,23 @@ const ChoroplethMap = ({ features }) => {
     }else{
       return "#00ffff"
     }
-  }
+  };
 
   const circleStyle = {
     stroke : "black",
     strokeWidth: "0.5px",
     opacity: "0.8"
   }
+  const stroke = {
+    stroke: "black",
+    strokeWidth: "0.5px",
+  };
 
+  for (let i = 0; i < datas.length; i++) {
+    if (isNaN(Number(datas[i]["総重量 (kg)"]))) {
+      datas[i]["総重量 (kg)"] = "10";
+    }
+  }
   return (
     <svg width={width} height={height} >
       <g>
@@ -66,7 +76,7 @@ const ChoroplethMap = ({ features }) => {
           const y = projection([data.経度,data.緯度])[1];
           console.log(datas.length)
           return (
-            <circle cx={x} cy={y} r={calcR(data["総重量 (kg)"])/4} fill={getColor(data)} style={circleStyle}/>
+            <circle cx={x} cy={y} r={calcR(data["総重量 (kg)"])} fill={getColor(data)} style={circleStyle}/>
           )
         })}
         {datas.map((data) => {
