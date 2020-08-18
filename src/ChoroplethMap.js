@@ -28,6 +28,26 @@ const ChoroplethMap = ({ features }) => {
 
   return (
     <body>
+      <div class="field">
+        <div class="control">
+          <div class="select is-primary">
+            <select>
+              <option>dropdown</option>
+              <option>With options</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <div class="select is-primary">
+            <select>
+              <option>Select dropdown</option>
+              <option>With options</option>
+            </select>
+          </div>
+        </div>
+      </div>
       <p>dfghjkl</p>
       <svg width={width} height={height}>
         <g>
@@ -57,6 +77,7 @@ const ChoroplethMap = ({ features }) => {
     </body>
   );
 };
+
 export const ChoroplethMapPage = () => {
   const [features, setFeatures] = useState(null);
   useEffect(() => {
