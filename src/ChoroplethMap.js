@@ -54,8 +54,6 @@ const ChoroplethMap = ({ features }) => {
     }
   }
 
-
-
   return (
     <svg width={width} height={height} style={stroke}>
       <g>
