@@ -1,7 +1,6 @@
-// import React from "react";
-
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 
 // import * as d3 from "d3";
