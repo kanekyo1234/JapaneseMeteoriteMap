@@ -16,42 +16,63 @@ const ChoroplethMap = ({ features }) => {
     .domain(d3.extent(features, (feature) => feature.properties.value))
     .range(["#ccc", "#f00"]);
   const calcR = (weight) => {
-    if (isNaN(Number(weight))) {
-      console.log(Number(weight));
-      return "10";
+
+    if(weight === 10){
+      return "10"
     }
-    if (weight < 1) {
-      return "5";
+    if(weight >= 100){
+      return "50"
+    }else if(weight < 2){
+      return weight*4
     }
-    return weight;
-  };
+    return weight*0.8
+  }
+
+  const getColor = (data) => {
+    let index =  data.年月日.indexOf("/");
+    let year = Number(data.年月日.slice(0,index))
+
+    if(year > 2000 ){
+      return "black";
+    }else if(year >= 1900){
+      return "#ffff00"
+    }else if(year >= 1800){
+      return "#00ff00"
+    }else{
+      return "#00ffff"
+    }
+  }
+
+  const stroke = {
+    stroke : "black",
+    strokeWidth: "0.5px"
+  }
+
+  for(let i = 0; i < datas.length; i++){
+    if(isNaN(Number(datas[i]["総重量 (kg)"]))){
+      datas[i]["総重量 (kg)"] = "10"
+    }
+  }
 
   return (
-    <body>
-      <p>dfghjkl</p>
-      <svg width={width} height={height}>
-        <g>
-          {features.map((feature, i) => (
-            <path key={i} d={path(feature)} fill="#008000" stroke="white" />
-          ))}
-          {datas.map((data, i) => {
-            const x = projection([data.経度, data.緯度])[0];
-            const y = projection([data.経度, data.緯度])[1];
-            return (
-              <circle
-                cx={x}
-                cy={y}
-                r={calcR(data["総重量 (kg)"])}
-                fill="black"
-              />
-            );
-          })}
-        </g>
-        {datas.map((data, i) => {
-          const x = projection([data.経度, data.緯度])[0];
-          const y = projection([data.経度, data.緯度])[1];
-          console.log(x, y);
-          return <circle cx={x} cy={y} r={String(10)} />;
+    <svg width={width} height={height} style={stroke}>
+      <g>
+        {features.map((feature, i) => (
+          <path
+            key={i}
+            d={path(feature)}
+            fill="#008000"
+            stroke="white"
+          />
+        ))}
+        
+        {datas.map((data,i) => {
+          const x = projection([data.経度,data.緯度])[0];
+          const y = projection([data.経度,data.緯度])[1];
+          console.log(datas.length)
+          return (
+            <circle cx={x} cy={y} r={calcR(data["総重量 (kg)"])} fill={getColor(data)}/>
+ 
         })}
       </svg>
     </body>
