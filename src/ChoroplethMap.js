@@ -23,7 +23,7 @@ const ChoroplethMap = ({ features }) => {
     }
     if(weight <= 0.5){
       return "5"
-    }else if(weight < 1){
+    }else if(weight <= 1){
       return "15"
     }
     return "30"
@@ -54,11 +54,6 @@ const ChoroplethMap = ({ features }) => {
     strokeWidth: "0.5px",
   };
 
-  for (let i = 0; i < datas.length; i++) {
-    if (isNaN(Number(datas[i]["総重量 (kg)"]))) {
-      datas[i]["総重量 (kg)"] = "10";
-    }
-  }
   return (
     <svg width={width} height={height} >
       <g>
