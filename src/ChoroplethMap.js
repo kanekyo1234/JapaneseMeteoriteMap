@@ -27,26 +27,34 @@ const ChoroplethMap = ({ features }) => {
   };
 
   return (
-    <svg width={width} height={height}>
-      <g>
-        {features.map((feature, i) => (
-          <path key={i} d={path(feature)} fill="#008000" stroke="white" />
-        ))}
+    <body>
+      <p>dfghjkl</p>
+      <svg width={width} height={height}>
+        <g>
+          {features.map((feature, i) => (
+            <path key={i} d={path(feature)} fill="#008000" stroke="white" />
+          ))}
+          {datas.map((data, i) => {
+            const x = projection([data.経度, data.緯度])[0];
+            const y = projection([data.経度, data.緯度])[1];
+            return (
+              <circle
+                cx={x}
+                cy={y}
+                r={calcR(data["総重量 (kg)"])}
+                fill="black"
+              />
+            );
+          })}
+        </g>
         {datas.map((data, i) => {
           const x = projection([data.経度, data.緯度])[0];
           const y = projection([data.経度, data.緯度])[1];
-          return (
-            <circle cx={x} cy={y} r={calcR(data["総重量 (kg)"])} fill="black" />
-          );
+          console.log(x, y);
+          return <circle cx={x} cy={y} r={String(10)} />;
         })}
-      </g>
-      {datas.map((data, i) => {
-        const x = projection([data.経度, data.緯度])[0];
-        const y = projection([data.経度, data.緯度])[1];
-        console.log(x, y);
-        return <circle cx={x} cy={y} r={String(10)} />;
-      })}
-    </svg>
+      </svg>
+    </body>
   );
 };
 export const ChoroplethMapPage = () => {

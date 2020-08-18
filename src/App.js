@@ -6,7 +6,7 @@ import { HashRouter as Router, Route, Link } from "react-router-dom";
 
 // import * as d3 from "d3";
 // import * as topojson from "topojson";
-import TopPage from "/TopPage";
+import TopPage from "./TopPage";
 import { ChoroplethMapPage } from "./ChoroplethMap";
 
 const TabLink = ({ to, children, exact }) => (
@@ -33,32 +33,27 @@ const App = () => {
           <div className="hero-body">
             <h1 className="title">Self-introduction</h1>
           </div>
-        </section>
 
-        <div className="hero-foot">
-          <nav className="tabs is- is-fullwidth">
-            <div className="container">
-              <ul>
-                <TabLink to="/" exact>
-                  Top
-                </TabLink>
-                <TabLink to="/Profile">Profile</TabLink>
-              </ul>
-            </div>
-          </nav>
-        </div>
+          <div className="hero-foot">
+            <nav className="tabs is- is-fullwidth">
+              <div className="container">
+                <ul>
+                  <TabLink to="/" exact>
+                    Top
+                  </TabLink>
+                  <TabLink to="/ChoroplethMap">inseki</TabLink>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </section>
 
         <div>
           <Route exact path="/" component={TopPage} />
-          <Route path="./Profile" component={ChoroplethMapPage} />
+          <Route path="/ChoroplethMap" component={ChoroplethMapPage} />
         </div>
-      </Router>
-
-      {/* <div className="container">
-        <p>hdbcjsbvsbdbfsjfb</p>
-        <ChoroplethMapPage />
-      </div> */}
-    </body>
+      </body>
+    </Router>
   );
 };
 
