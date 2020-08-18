@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 
@@ -8,7 +7,6 @@ import { HashRouter as Router, Route, Link } from "react-router-dom";
 // import * as topojson from "topojson";
 import TopPage from "./TopPage";
 import { ChoroplethMapPage } from "./ChoroplethMap";
-
 
 const TabLink = ({ to, children, exact }) => (
   <Route
@@ -28,13 +26,11 @@ const TabLink = ({ to, children, exact }) => (
 
 const App = () => {
   return (
-
     <Router>
-      
       <body>
         <section className="hero is-primary">
           <div className="hero-body">
-            <h1 className="title">Sel-introduction</h1>
+            <h1 className="title">日本に落ちた隕石は一体...</h1>
           </div>
 
           <div className="hero-foot">
@@ -42,9 +38,9 @@ const App = () => {
               <div className="container">
                 <ul>
                   <TabLink to="/" exact>
-                    説明
+                    TOP
                   </TabLink>
-                  <TabLink to="/ChoroplethMap">隕石</TabLink>
+                  <TabLink to="/ChoroplethMap">MAP</TabLink>
                 </ul>
               </div>
             </nav>
@@ -57,39 +53,42 @@ const App = () => {
         </div>
       </body>
     </Router>
-    
   );
 };
 
-const Aa=()=>{
-  return(
+const Aa = () => {
+  return (
     <div>
       <section class="section">
-    <div class="container">
-      <h1 class="title">Section</h1>
-      <h2 class="subtitle">
-        A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
-      </h2>
+        <div class="container">
+          <h1 class="title">Section</h1>
+          <h2 class="subtitle">
+            A simple container to divide your page into{" "}
+            <strong>sections</strong>, like the one you're currently reading
+          </h2>
+        </div>
+      </section>
     </div>
-  </section>
-    </div>
-
   );
 };
-const Footer=()=>{
-  return(
-  <footer class="footer">
-  <div class="content has-text-centered">
-    <p>
-      <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-      <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-      is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-    </p>
-  </div>
-</footer>
-);
+const Footer = () => {
+  return (
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Bulma</strong> by{" "}
+          <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is
+          licensed
+          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The
+          website content is licensed{" "}
+          <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+            CC BY NC SA 4.0
+          </a>
+          .
+        </p>
+      </div>
+    </footer>
+  );
 };
-
-
 
 export default App;
