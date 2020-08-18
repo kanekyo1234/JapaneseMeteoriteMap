@@ -17,32 +17,37 @@ const ChoroplethMap = ({ features }) => {
 
     .range(["#ccc", "#f00"]);
   const calcR = (weight) => {
-    if (weight === 10) {
-      return "10";
+
+    if(isNaN(Number(weight))){
+      return "10"
     }
-    if (weight >= 100) {
-      return "50";
-    } else if (weight < 2) {
-      return weight * 4;
+    if(weight <= 0.5){
+      return "5"
+    }else if(weight < 1){
+      return "15"
     }
-    return weight * 0.8;
+    return "30"
+  }
+
+  const getColor = (data) => {  
+    let index =  data.年月日.indexOf("/");
+    let year = Number(data.年月日.slice(0,index))
+
+    if(year > 2000 ){
+      return "red";
+    }else if(year >= 1900){
+      return "#ffff00"
+    }else if(year >= 1800){
+      return "#00ff00"
+    }else{
+      return "#00ffff"
+    }
   };
 
-  const getColor = (data) => {
-    let index = data.年月日.indexOf("/");
-    let year = Number(data.年月日.slice(0, index));
-
-    if (year > 2000) {
-      return "black";
-    } else if (year >= 1900) {
-      return "#ffff00";
-    } else if (year >= 1800) {
-      return "#00ff00";
-    } else {
-      return "#00ffff";
-    }
-  };
-
+  const circleStyle = {
+    stroke : "black",
+    strokeWidth: "0.5px",
+    opacity: "0.8"
   const stroke = {
     stroke: "black",
     strokeWidth: "0.5px",
@@ -54,50 +59,32 @@ const ChoroplethMap = ({ features }) => {
     }
   }
   return (
-
-    <body>
-      <div class="field">
-        <div class="control">
-          <div class="select is-primary">
-            <select>
-              <option>dropdown</option>
-              <option>With options</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="field">
-        <div class="control">
-          <div class="select is-primary">
-            <select>
-              <option>Select dropdown</option>
-              <option>With options</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <p>dfghjkl</p>
-
-      <svg width={width} height={height} style={stroke}>
-        <g>
-          {features.map((feature, i) => (
-            <path key={i} d={path(feature)} fill="#008000" stroke="white" />
-          ))}
-
-          {datas.map((data, i) => {
-            const x = projection([data.経度, data.緯度])[0];
-            const y = projection([data.経度, data.緯度])[1];
-            console.log(datas.length);
-            return (
-              <circle
-                cx={x}
-                cy={y}
-                r={calcR(data["総重量 (kg)"])}
-                fill={getColor(data)}
-              />
-            );
-          })}
-        </g>
+    <svg width={width} height={height} >
+      <g>
+        {features.map((feature, i) => (
+          <path
+            key={i}
+            d={path(feature)}
+            fill="#008000"
+            stroke="white"
+          />
+        ))}
+        
+        {datas.map((data,i) => {
+          const x = projection([data.経度,data.緯度])[0];
+          const y = projection([data.経度,data.緯度])[1];
+          console.log(datas.length)
+          return (
+            <circle cx={x} cy={y} r={calcR(data["総重量 (kg)"])} fill={getColor(data)} style={circleStyle}/>
+          )
+        })}
+        {datas.map((data) => {
+          const x = projection([data.経度,data.緯度])[0];
+          const y = projection([data.経度,data.緯度])[1];
+          return (
+            <circle cx={x} cy={y} r="0.5" fill="black"/>
+          )
+        })}
       </svg>
     </body>
   );
