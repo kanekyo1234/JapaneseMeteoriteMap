@@ -27,17 +27,10 @@ const ChoroplethMap = ({ features }) => {
     if (isNaN(Number(weight))) {
       return "10";
     }
-<<<<<<< HEAD
     if (weight <= 0.5) {
       return "5";
-    } else if (weight < 1) {
+    } else if (weight <= 1) {
       return "15";
-=======
-    if(weight <= 0.5){
-      return "5"
-    }else if(weight <= 1){
-      return "15"
->>>>>>> 8291364902c407aa14a79542ee4adc33597b40a2
     }
     return "30";
   };
