@@ -17,23 +17,23 @@ const ChoroplethMap = ({ features }) => {
     .domain(d3.extent(features, (feature) => feature.properties.value))
     .range(["#ccc", "#f00"]);
   const calcR = (weight) => {
-    if(weight === 10){
+    if(isNaN(Number(weight))){
       return "10"
     }
-    if(weight >= 100){
-      return "50"
-    }else if(weight < 2){
-      return weight*4
+    if(weight <= 0.5){
+      return "5"
+    }else if(weight < 1){
+      return "15"
     }
-    return weight*0.8
+    return "30"
   }
 
-  const getColor = (data) => {
+  const getColor = (data) => {  
     let index =  data.年月日.indexOf("/");
     let year = Number(data.年月日.slice(0,index))
 
     if(year > 2000 ){
-      return "black";
+      return "red";
     }else if(year >= 1900){
       return "#ffff00"
     }else if(year >= 1800){
@@ -43,19 +43,14 @@ const ChoroplethMap = ({ features }) => {
     }
   }
 
-  const stroke = {
+  const circleStyle = {
     stroke : "black",
-    strokeWidth: "0.5px"
-  }
-
-  for(let i = 0; i < datas.length; i++){
-    if(isNaN(Number(datas[i]["総重量 (kg)"]))){
-      datas[i]["総重量 (kg)"] = "10"
-    }
+    strokeWidth: "0.5px",
+    opacity: "0.8"
   }
 
   return (
-    <svg width={width} height={height} style={stroke}>
+    <svg width={width} height={height} >
       <g>
         {features.map((feature, i) => (
           <path
@@ -71,7 +66,15 @@ const ChoroplethMap = ({ features }) => {
           const y = projection([data.経度,data.緯度])[1];
           console.log(datas.length)
           return (
-            <circle cx={x} cy={y} r={calcR(data["総重量 (kg)"])} fill={getColor(data)}/>)
+            <circle cx={x} cy={y} r={calcR(data["総重量 (kg)"])} fill={getColor(data)} style={circleStyle}/>
+          )
+        })}
+        {datas.map((data) => {
+          const x = projection([data.経度,data.緯度])[0];
+          const y = projection([data.経度,data.緯度])[1];
+          return (
+            <circle cx={x} cy={y} r="0.5" fill="black"/>
+          )
         })}
       </g>
     </svg>
