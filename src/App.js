@@ -29,10 +29,11 @@ const App = () => {
   return (
 
     <Router>
+      
       <body>
         <section className="hero is-primary">
           <div className="hero-body">
-            <h1 className="title">Self-introduction</h1>
+            <h1 className="title">Sel-introduction</h1>
           </div>
 
           <div className="hero-foot">
@@ -40,9 +41,9 @@ const App = () => {
               <div className="container">
                 <ul>
                   <TabLink to="/" exact>
-                    Top
+                    説明
                   </TabLink>
-                  <TabLink to="/ChoroplethMap">inseki</TabLink>
+                  <TabLink to="/ChoroplethMap">隕石</TabLink>
                 </ul>
               </div>
             </nav>
@@ -55,28 +56,9 @@ const App = () => {
         </div>
       </body>
     </Router>
-
+    
   );
 };
-const Hero=()=>{
-  return(
-    <div>
-<section class="hero is-primary">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        Primary title
-      </h1>
-      <h2 class="subtitle">
-        Primary subtitle
-      </h2>
-    </div>
-  </div>
-</section>
-</div>
-  );
-}
-
 
 const Aa=()=>{
   return(
