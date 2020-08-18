@@ -14,6 +14,7 @@ const ChoroplethMap = ({ features }) => {
   const color = d3
     .scaleLinear()
     .domain(d3.extent(features, (feature) => feature.properties.value))
+
     .range(["#ccc", "#f00"]);
   const calcR = (weight) => {
 
@@ -41,14 +42,22 @@ const ChoroplethMap = ({ features }) => {
     }else{
       return "#00ffff"
     }
-  }
+  };
 
   const circleStyle = {
     stroke : "black",
     strokeWidth: "0.5px",
     opacity: "0.8"
-  }
+  const stroke = {
+    stroke: "black",
+    strokeWidth: "0.5px",
+  };
 
+  for (let i = 0; i < datas.length; i++) {
+    if (isNaN(Number(datas[i]["総重量 (kg)"]))) {
+      datas[i]["総重量 (kg)"] = "10";
+    }
+  }
   return (
     <svg width={width} height={height} >
       <g>
@@ -80,6 +89,7 @@ const ChoroplethMap = ({ features }) => {
     </body>
   );
 };
+
 export const ChoroplethMapPage = () => {
   const [features, setFeatures] = useState(null);
   useEffect(() => {
@@ -95,6 +105,7 @@ export const ChoroplethMapPage = () => {
   }
   return <ChoroplethMap features={features} />;
 };
+
 
 // import React, { useEffect, useState } from "react";
 // import * as d3 from "d3";
