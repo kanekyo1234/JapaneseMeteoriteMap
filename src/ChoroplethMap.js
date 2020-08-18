@@ -8,9 +8,12 @@ const ChoroplethMap = ({ features }) => {
   const height = 800;
   const standardScale = 2000;
   const datas = Jsondata;
-  let now = ["10", "20", "25", "15", "0"];
-  const [Era, setEra] = useState(); //年代
-  const [Weight, setWeight] = useState(4); //年代
+  let nowEra = ["#00ffff", "#00ff00", "#ffff00", "red", "0"];
+  let nowWeight = ["10", "20", "25", "15", "0"];
+  let now = ["1", "2"];
+  const [Era, setEra] = useState(4); //年代
+  const [Weight, setWeight] = useState(4); //総重量
+  const [Now, setNow] = useState(1); //総重量
   const projection = d3
     .geoMercator()
     .scale(standardScale)
@@ -67,6 +70,8 @@ const ChoroplethMap = ({ features }) => {
             <section className="section">
               <Circle />
               <EraBox setEra={(Era, setEra)} />
+
+              <NowBox setNow={(Now, setNow)} />
               <WeightBox setWeight={(Weight, setWeight)} />
             </section>
           </div>
@@ -86,27 +91,41 @@ const ChoroplethMap = ({ features }) => {
                   const x = projection([data.経度, data.緯度])[0];
                   const y = projection([data.経度, data.緯度])[1];
                   console.log(datas.length);
-                  if (now[Weight] === "0") {
-                    return (
-                      <circle
-                        cx={x}
-                        cy={y}
-                        r={calcR(data["総重量 (kg)"])}
-                        fill={getColor(data)}
-                        style={circleStyle}
-                      />
-                    );
-                  }
-                  if (now[Weight] === calcR(data["総重量 (kg)"])) {
-                    return (
-                      <circle
-                        cx={x}
-                        cy={y}
-                        r={calcR(data["総重量 (kg)"])}
-                        fill={getColor(data)}
-                        style={circleStyle}
-                      />
-                    );
+                  if (now[Now] === "1") {
+                    //または
+
+                    if (
+                      nowWeight[Weight] === calcR(data["総重量 (kg)"]) ||
+                      nowWeight[Weight] === "0" ||
+                      nowEra[Era] === getColor(data) ||
+                      nowEra[Era] === "0"
+                    ) {
+                      return (
+                        <circle
+                          cx={x}
+                          cy={y}
+                          r={calcR(data["総重量 (kg)"])}
+                          fill={getColor(data)}
+                          style={circleStyle}
+                        />
+                      );
+                    }
+                  } else {
+                    if (
+                      (nowWeight[Weight] === calcR(data["総重量 (kg)"]) ||
+                        nowWeight[Weight] === "0") &&
+                      (nowEra[Era] === getColor(data) || nowEra[Era] === "0")
+                    ) {
+                      return (
+                        <circle
+                          cx={x}
+                          cy={y}
+                          r={calcR(data["総重量 (kg)"])}
+                          fill={getColor(data)}
+                          style={circleStyle}
+                        />
+                      );
+                    }
                   }
                 })}
                 {datas.map((data) => {
@@ -126,42 +145,61 @@ const ChoroplethMap = ({ features }) => {
 const EraBox = (props) => {
   console.log(props);
   const change = (event) => {
-    console.log(event.target.value);
     props.setEra(event.target.value);
   };
   return (
-    <form>
-      <div class="select">
-        <select onChange={change}>
-          <option value="5"></option>
-          <option value="1"></option>
-          <option value="2"></option>
-          <option value="3"></option>
-          <option value="4"></option>
-        </select>
-      </div>
-    </form>
+    <div class="field">
+      <form>
+        <div class="select is-rounded">
+          <select onChange={change}>
+            <option value="4">年代の選択</option>
+            <option value="0">~1800</option>
+            <option value="1">1800~1900</option>
+            <option value="2">1900~2000</option>
+            <option value="3">2000~</option>
+          </select>
+        </div>
+      </form>
+    </div>
+  );
+};
+const NowBox = (props) => {
+  console.log(props);
+  const change = (event) => {
+    props.setNow(event.target.value);
+  };
+  return (
+    <div class="field">
+      <form>
+        <div class="select is-rounded">
+          <select onChange={change}>
+            <option value="1">かつ</option>
+            <option value="0">または</option>
+          </select>
+        </div>
+      </form>
+    </div>
   );
 };
 
-const WeightBox = (props) => {
+const WeightBox = (data) => {
   const change = (event) => {
-    console.log(props);
-    console.log(event.target.value);
-    props.setWeight(event.target.value);
+    data.setWeight(event.target.value);
   };
   return (
-    <form>
-      <div class="select">
-        <select onChange={change}>
-          <option value="4">総重量の選択</option>
-          <option value="0">~0.5Kg</option>
-          <option value="1">0.5kg~1.0kg</option>
-          <option value="2">1kg~</option>
-          <option value="3">???</option>
-        </select>
-      </div>
-    </form>
+    <div class="field">
+      <form>
+        <div class="select is-rounded">
+          <select onChange={change}>
+            <option value="4">総重量の選択</option>
+            <option value="0">~0.5Kg</option>
+            <option value="1">0.5~1.0kg</option>
+            <option value="2">1kg~</option>
+            <option value="3">???</option>
+          </select>
+        </div>
+      </form>
+    </div>
   );
 };
 
@@ -170,7 +208,10 @@ const Circle = () => {
   const height = 200;
   return (
     <svg width={width} height={height}>
-      <g transform="translate(0, 0)">
+      <g transform="translate(50, 0)">
+        <text x="0" y="85" fontSize="20" textAnchor="middle">
+          落ちた年
+        </text>
         <circle cx="70" cy="80" r="10" fill="#00FFFF" opacity="0.8" />
         <text x="120" y="85" fontSize="20" textAnchor="middle">
           :~1800
@@ -188,21 +229,24 @@ const Circle = () => {
           :2000~
         </text>
       </g>
-      <g transform="translate(0, 50)">
+      <g transform="translate(50, 50)">
+        <text x="0" y="85" fontSize="20" textAnchor="middle">
+          総重量
+        </text>
         <circle cx="70" cy="80" r="10" opacity="0.8" />
         <text x="120" y="85" fontSize="20" textAnchor="middle">
           :~0.5Kg
         </text>
         <circle cx="180" cy="80" r="20" opacity="0.8" />
-        <text x="250" y="85" fontSize="20" textAnchor="middle">
-          :0.5Kg~ 1Kg
+        <text x="260" y="85" fontSize="20" textAnchor="middle">
+          :0.5~ 1Kg
         </text>
-        <circle cx="350" cy="80" r="25" opacity="0.8" />
+        <circle cx="357" cy="80" r="25" opacity="0.8" />
         <text x="420" y="85" fontSize="20" textAnchor="middle">
           :1Kg~
         </text>
         <circle cx="480" cy="80" r="15" opacity="0.8" />
-        <text x="520" y="85" fontSize="20" textAnchor="middle">
+        <text x="530" y="85" fontSize="20" textAnchor="middle">
           :　???
         </text>
       </g>

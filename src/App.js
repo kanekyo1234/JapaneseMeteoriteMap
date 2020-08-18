@@ -30,7 +30,7 @@ const App = () => {
       <body>
         <section className="hero is-primary">
           <div className="hero-body">
-            <h1 className="title">日本に落ちた隕石は一体...</h1>
+            <h1 className="title">JapaneseMeteorite Map</h1>
           </div>
 
           <div className="hero-foot">
