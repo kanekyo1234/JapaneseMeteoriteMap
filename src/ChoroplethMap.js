@@ -14,6 +14,7 @@ const ChoroplethMap = ({ features }) => {
   const color = d3
     .scaleLinear()
     .domain(d3.extent(features, (feature) => feature.properties.value))
+
     .range(["#ccc", "#f00"]);
   const calcR = (weight) => {
     if (weight === 10) {
@@ -52,8 +53,8 @@ const ChoroplethMap = ({ features }) => {
       datas[i]["総重量 (kg)"] = "10";
     }
   }
-
   return (
+
     <body>
       <div class="field">
         <div class="control">
@@ -117,6 +118,7 @@ export const ChoroplethMapPage = () => {
   }
   return <ChoroplethMap features={features} />;
 };
+
 
 // import React, { useEffect, useState } from "react";
 // import * as d3 from "d3";
