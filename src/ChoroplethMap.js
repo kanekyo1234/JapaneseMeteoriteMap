@@ -131,7 +131,28 @@ const ChoroplethMap = ({ features }) => {
                 {datas.map((data) => {
                   const x = projection([data.経度, data.緯度])[0];
                   const y = projection([data.経度, data.緯度])[1];
-                  return <circle cx={x} cy={y} r="0.5" fill="black" />;
+                  if (now[Now] === "1") {
+                    //または
+
+                    if (
+                      nowWeight[Weight] === calcR(data["総重量 (kg)"]) ||
+                      nowWeight[Weight] === "0" ||
+                      nowEra[Era] === getColor(data) ||
+                      nowEra[Era] === "0"
+                    ) {
+                      return <circle cx={x} cy={y} r="0.5" fill="black" />;
+                    }
+                  } else {
+                    //または
+
+                    if (
+                      (nowWeight[Weight] === calcR(data["総重量 (kg)"]) ||
+                        nowWeight[Weight] === "0") &&
+                      (nowEra[Era] === getColor(data) || nowEra[Era] === "0")
+                    ) {
+                      return <circle cx={x} cy={y} r="0.5" fill="black" />;
+                    }
+                  }
                 })}
               </g>
             </svg>
