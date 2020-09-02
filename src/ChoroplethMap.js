@@ -9,7 +9,7 @@ const ChoroplethMap = ({ features }) => {
   const standardScale = 2000;
   const datas = Jsondata;
   let nowEra = ["#00ffff", "#00ff00", "#ffff00", "red", "0"];
-  let nowWeight = ["10", "20", "25", "15", "0"];
+  let nowWeight = ["10", "20", "30", "?", "0"];
   let now = ["1", "2"];
   const [Era, setEra] = useState(4); //年代
   const [Weight, setWeight] = useState(4); //総重量
@@ -27,14 +27,14 @@ const ChoroplethMap = ({ features }) => {
     .range(["#ccc", "#f00"]);
   const calcR = (weight) => {
     if (isNaN(Number(weight))) {
-      return "15";
+      return "?";
     }
     if (weight <= 0.5) {
       return "10";
     } else if (weight <= 1) {
       return "20";
     }
-    return "25";
+    return "30";
   };
 
   const getColor = (data) => {
@@ -90,8 +90,8 @@ const ChoroplethMap = ({ features }) => {
                 {datas.map((data, i) => {
                   const x = projection([data.経度, data.緯度])[0];
                   const y = projection([data.経度, data.緯度])[1];
-                  console.log(datas.length);
                   if (now[Now] === "1") {
+                    //ここら辺は選択肢の条件付け
                     //または
 
                     if (
@@ -100,15 +100,28 @@ const ChoroplethMap = ({ features }) => {
                       nowEra[Era] === getColor(data) ||
                       nowEra[Era] === "0"
                     ) {
-                      return (
-                        <circle
-                          cx={x}
-                          cy={y}
-                          r={calcR(data["総重量 (kg)"])}
-                          fill={getColor(data)}
-                          style={circleStyle}
-                        />
-                      );
+                      if (calcR(data["総重量 (kg)"]) === "?") {
+                        return (
+                          <rect
+                            x={x - 10}
+                            y={y - 10}
+                            width="20"
+                            height="20"
+                            fill={getColor(data)}
+                            style={circleStyle}
+                          />
+                        );
+                      } else {
+                        return (
+                          <circle
+                            cx={x}
+                            cy={y}
+                            r={calcR(data["総重量 (kg)"])}
+                            fill={getColor(data)}
+                            style={circleStyle}
+                          />
+                        );
+                      }
                     }
                   } else {
                     if (
@@ -116,15 +129,28 @@ const ChoroplethMap = ({ features }) => {
                         nowWeight[Weight] === "0") &&
                       (nowEra[Era] === getColor(data) || nowEra[Era] === "0")
                     ) {
-                      return (
-                        <circle
-                          cx={x}
-                          cy={y}
-                          r={calcR(data["総重量 (kg)"])}
-                          fill={getColor(data)}
-                          style={circleStyle}
-                        />
-                      );
+                      if (calcR(data["総重量 (kg)"]) === "?") {
+                        return (
+                          <rect
+                            x={x - 10}
+                            y={y - 10}
+                            width="20"
+                            height="20"
+                            fill={getColor(data)}
+                            style={circleStyle}
+                          />
+                        );
+                      } else {
+                        return (
+                          <circle
+                            cx={x}
+                            cy={y}
+                            r={calcR(data["総重量 (kg)"])}
+                            fill={getColor(data)}
+                            style={circleStyle}
+                          />
+                        );
+                      }
                     }
                   }
                 })}
@@ -174,7 +200,7 @@ const EraBox = (props) => {
         <div class="select is-rounded">
           <select onChange={change}>
             <option value="4">年代の選択</option>
-            <option value="0">~1800</option>
+            <option value="0"> ~1800</option>
             <option value="1">1800~1900</option>
             <option value="2">1900~2000</option>
             <option value="3">2000~</option>
@@ -213,7 +239,7 @@ const WeightBox = (data) => {
         <div class="select is-rounded">
           <select onChange={change}>
             <option value="4">総重量の選択</option>
-            <option value="0">~0.5Kg</option>
+            <option value="0"> ~0.5Kg</option>
             <option value="1">0.5~1.0kg</option>
             <option value="2">1kg~</option>
             <option value="3">???</option>
@@ -258,15 +284,15 @@ const Circle = () => {
         <text x="120" y="85" fontSize="20" textAnchor="middle">
           :~0.5Kg
         </text>
-        <circle cx="180" cy="80" r="20" opacity="0.8" />
+        <circle cx="190" cy="80" r="20" opacity="0.8" />
         <text x="260" y="85" fontSize="20" textAnchor="middle">
           :0.5~ 1Kg
         </text>
-        <circle cx="357" cy="80" r="25" opacity="0.8" />
+        <circle cx="352" cy="80" r="30" opacity="0.8" />
         <text x="420" y="85" fontSize="20" textAnchor="middle">
           :1Kg~
         </text>
-        <circle cx="480" cy="80" r="15" opacity="0.8" />
+        <rect x="470" y="70" width="20" height="20" />
         <text x="530" y="85" fontSize="20" textAnchor="middle">
           :　???
         </text>

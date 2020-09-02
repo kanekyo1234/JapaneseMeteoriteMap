@@ -4,6 +4,21 @@ const Tops = () => {
     <body>
       <div>
         <div className="container">
+          <br></br>
+          <article class="message is-dark">
+            <section className="section">
+              <div class="message-header">
+                <p>このサイトについて</p>
+              </div>
+              <div class="message-body">
+                このサイトは、日本に落ちた隕石のオープンデータを用い、日本地図上に実際に落ちた場所を描画し、可視化したサイトである。上記のMAPタブに2020年9月2日現在までのデータが示されている。
+                <br></br>使用したデータ⇨
+                <a href="https://www.kahaku.go.jp/research/db/science_engineering/inseki/inseki_list.html">
+                  https://www.kahaku.go.jp/research/db/science_engineering/inseki/inseki_list.html
+                </a>
+              </div>
+            </section>
+          </article>
           <article class="message is-dark">
             <section className="section">
               <div class="message-header">
@@ -31,7 +46,7 @@ const Tops = () => {
           <article class="message is-dark">
             <section className="section">
               <div class="message-header">
-                <p>可視化の目的</p>
+                <p>可視化により</p>
               </div>
               <div class="message-body">
                 この可視化は日本のどこに,いつ,どれくらいの規模の隕石が落ちたかを明確に視認することができる.上記の三条件を見やすく表現するには,今回のような日本地図上での円の描画が一番最適だと判断した。事実上記の三条件がこの図ならば明確に把握できる.この図を見ることによって,例えるならば本州には満遍なく隕石が落ちているのに対し,北海道はその面積に対し1つしか落ちていないことや,2000年に入ってからまだ3つしか隕石が落ちていないなどの情報が一目で読み取ることができる.
