@@ -61,7 +61,7 @@ const ChoroplethMap = ({ features }) => {
     opacity: "0.8",
   };
   const circleStyle2 = {
-    stroke: "white",
+    stroke: "gray",
     strokeWidth: "2.0px",
     opacity: "0.8",
   };
@@ -297,6 +297,16 @@ const WeightBox = (data) => {
 const Circle = () => {
   const width = 800;
   const height = 200;
+  const circleStyle1 = {
+    stroke: "black",
+    strokeWidth: "2.0px",
+    opacity: "0.8",
+  };
+  const circleStyle2 = {
+    stroke: "gray",
+    strokeWidth: "2.0px",
+    opacity: "0.8",
+  };
   return (
     <svg width={width} height={height}>
       <g transform="translate(50, 0)">
@@ -339,6 +349,33 @@ const Circle = () => {
         <rect x="470" y="70" width="20" height="20" />
         <text x="530" y="85" fontSize="20" textAnchor="middle">
           :　???
+        </text>
+      </g>
+      <g transform="translate(50, 100)">
+        <text x="0" y="85" fontSize="20" textAnchor="middle">
+          分類
+        </text>
+        <circle
+          cx="70"
+          cy="80"
+          r="10"
+          opacity="0.8"
+          fill="red"
+          style={circleStyle1}
+        />
+        <text x="130" y="90" fontSize="20" textAnchor="middle">
+          石鉄隕石
+        </text>
+        <circle
+          cx="200"
+          cy="80"
+          r="10"
+          opacity="0.8"
+          fill="red"
+          style={circleStyle2}
+        />
+        <text x="260" y="85" fontSize="20" textAnchor="middle">
+          鉄隕石
         </text>
       </g>
     </svg>
