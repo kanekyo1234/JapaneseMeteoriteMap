@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.js": "/SVG-tutorial/static/js/main.401e57cd.chunk.js",
-    "main.js.map": "/SVG-tutorial/static/js/main.401e57cd.chunk.js.map",
+    "main.js": "/SVG-tutorial/static/js/main.2f843db5.chunk.js",
+    "main.js.map": "/SVG-tutorial/static/js/main.2f843db5.chunk.js.map",
     "runtime-main.js": "/SVG-tutorial/static/js/runtime-main.125349d2.js",
     "runtime-main.js.map": "/SVG-tutorial/static/js/runtime-main.125349d2.js.map",
     "static/css/2.0c0672e5.chunk.css": "/SVG-tutorial/static/css/2.0c0672e5.chunk.css",
-    "static/js/2.fe8ce235.chunk.js": "/SVG-tutorial/static/js/2.fe8ce235.chunk.js",
-    "static/js/2.fe8ce235.chunk.js.map": "/SVG-tutorial/static/js/2.fe8ce235.chunk.js.map",
+    "static/js/2.2b40f2b9.chunk.js": "/SVG-tutorial/static/js/2.2b40f2b9.chunk.js",
+    "static/js/2.2b40f2b9.chunk.js.map": "/SVG-tutorial/static/js/2.2b40f2b9.chunk.js.map",
     "index.html": "/SVG-tutorial/index.html",
-    "precache-manifest.d7ab2c255348ec3bc2eec5f1cac6103a.js": "/SVG-tutorial/precache-manifest.d7ab2c255348ec3bc2eec5f1cac6103a.js",
+    "precache-manifest.752c176c91de54555285dc3848041d89.js": "/SVG-tutorial/precache-manifest.752c176c91de54555285dc3848041d89.js",
     "service-worker.js": "/SVG-tutorial/service-worker.js",
     "static/css/2.0c0672e5.chunk.css.map": "/SVG-tutorial/static/css/2.0c0672e5.chunk.css.map",
-    "static/js/2.fe8ce235.chunk.js.LICENSE.txt": "/SVG-tutorial/static/js/2.fe8ce235.chunk.js.LICENSE.txt"
+    "static/js/2.2b40f2b9.chunk.js.LICENSE.txt": "/SVG-tutorial/static/js/2.2b40f2b9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.125349d2.js",
     "static/css/2.0c0672e5.chunk.css",
-    "static/js/2.fe8ce235.chunk.js",
-    "static/js/main.401e57cd.chunk.js"
+    "static/js/2.2b40f2b9.chunk.js",
+    "static/js/main.2f843db5.chunk.js"
   ]
 }

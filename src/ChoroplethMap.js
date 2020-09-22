@@ -363,7 +363,7 @@ const Circle = () => {
           fill="red"
           style={circleStyle1}
         />
-        <text x="130" y="90" fontSize="20" textAnchor="middle">
+        <text x="130" y="87" fontSize="20" textAnchor="middle">
           石鉄隕石
         </text>
         <circle
@@ -374,7 +374,7 @@ const Circle = () => {
           fill="red"
           style={circleStyle2}
         />
-        <text x="260" y="85" fontSize="20" textAnchor="middle">
+        <text x="260" y="87" fontSize="20" textAnchor="middle">
           鉄隕石
         </text>
       </g>
