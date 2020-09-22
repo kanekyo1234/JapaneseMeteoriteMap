@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
 import * as topojson from "topojson";
-import Jsondata from "./output.json";
+import Jsondata from "./insekioutput.json";
 
 const ChoroplethMap = ({ features }) => {
   const width = 1060;
@@ -11,9 +11,12 @@ const ChoroplethMap = ({ features }) => {
   let nowEra = ["#00ffff", "#00ff00", "#ffff00", "red", "0"];
   let nowWeight = ["10", "20", "30", "?", "0"];
   let now = ["1", "2"];
+  let nowClass = ["0", "石質隕石", "鉄隕石"];
+
   const [Era, setEra] = useState(4); //年代
   const [Weight, setWeight] = useState(4); //総重量
   const [Now, setNow] = useState(1); //総重量
+  const [Class, setClass] = useState(0); //分類
   const projection = d3
     .geoMercator()
     .scale(standardScale)
@@ -38,8 +41,8 @@ const ChoroplethMap = ({ features }) => {
   };
 
   const getColor = (data) => {
-    let index = data.年月日.indexOf("/");
-    let year = Number(data.年月日.slice(0, index));
+    let index = data.落下日.indexOf("年");
+    let year = Number(data.落下日.slice(0, index));
 
     if (year > 2000) {
       return "red";
@@ -52,14 +55,27 @@ const ChoroplethMap = ({ features }) => {
     }
   };
 
-  const circleStyle = {
+  const circleStyle1 = {
     stroke: "black",
-    strokeWidth: "0.5px",
+    strokeWidth: "2.0px",
     opacity: "0.8",
   };
+  const circleStyle2 = {
+    stroke: "white",
+    strokeWidth: "2.0px",
+    opacity: "0.8",
+  };
+  const getStyle = (data) => {
+    if (data["分類"] === "石質隕石") {
+      return circleStyle1;
+    } else {
+      return circleStyle2;
+    }
+  };
+
   const stroke = {
-    stroke: "black",
-    strokeWidth: "0.5px",
+    stroke: "white",
+    strokeWidth: "10.0px",
   };
 
   return (
@@ -69,10 +85,10 @@ const ChoroplethMap = ({ features }) => {
           <div className="column  is-one-fifth">
             <section className="section">
               <Circle />
-              <EraBox setEra={(Era, setEra)} />
-
               <NowBox setNow={(Now, setNow)} />
+              <EraBox setEra={(Era, setEra)} />
               <WeightBox setWeight={(Weight, setWeight)} />
+              <ClassificationBox setClass={(Class, setClass)} />
             </section>
           </div>
           <div className="column">
@@ -98,7 +114,9 @@ const ChoroplethMap = ({ features }) => {
                       nowWeight[Weight] === calcR(data["総重量 (kg)"]) ||
                       nowWeight[Weight] === "0" ||
                       nowEra[Era] === getColor(data) ||
-                      nowEra[Era] === "0"
+                      nowEra[Era] === "0" ||
+                      nowClass[Class] === data["分類"] ||
+                      nowClass[Class] === "0"
                     ) {
                       if (calcR(data["総重量 (kg)"]) === "?") {
                         return (
@@ -108,7 +126,7 @@ const ChoroplethMap = ({ features }) => {
                             width="20"
                             height="20"
                             fill={getColor(data)}
-                            style={circleStyle}
+                            style={getStyle(data)}
                           />
                         );
                       } else {
@@ -118,7 +136,7 @@ const ChoroplethMap = ({ features }) => {
                             cy={y}
                             r={calcR(data["総重量 (kg)"])}
                             fill={getColor(data)}
-                            style={circleStyle}
+                            style={getStyle(data)}
                           />
                         );
                       }
@@ -127,7 +145,9 @@ const ChoroplethMap = ({ features }) => {
                     if (
                       (nowWeight[Weight] === calcR(data["総重量 (kg)"]) ||
                         nowWeight[Weight] === "0") &&
-                      (nowEra[Era] === getColor(data) || nowEra[Era] === "0")
+                      (nowEra[Era] === getColor(data) || nowEra[Era] === "0") &&
+                      (nowClass[Class] === data["分類"] ||
+                        nowClass[Class] === "0")
                     ) {
                       if (calcR(data["総重量 (kg)"]) === "?") {
                         return (
@@ -137,7 +157,7 @@ const ChoroplethMap = ({ features }) => {
                             width="20"
                             height="20"
                             fill={getColor(data)}
-                            style={circleStyle}
+                            style={getStyle(data)}
                           />
                         );
                       } else {
@@ -147,13 +167,14 @@ const ChoroplethMap = ({ features }) => {
                             cy={y}
                             r={calcR(data["総重量 (kg)"])}
                             fill={getColor(data)}
-                            style={circleStyle}
+                            style={getStyle(data)}
                           />
                         );
                       }
                     }
                   }
                 })}
+                {/* ここからは小さい点の描画 */}
                 {datas.map((data) => {
                   const x = projection([data.経度, data.緯度])[0];
                   const y = projection([data.経度, data.緯度])[1];
@@ -164,17 +185,21 @@ const ChoroplethMap = ({ features }) => {
                       nowWeight[Weight] === calcR(data["総重量 (kg)"]) ||
                       nowWeight[Weight] === "0" ||
                       nowEra[Era] === getColor(data) ||
-                      nowEra[Era] === "0"
+                      nowEra[Era] === "0" ||
+                      nowClass[Class] === data["分類"] ||
+                      nowClass[Class] === "0"
                     ) {
                       return <circle cx={x} cy={y} r="0.5" fill="black" />;
                     }
                   } else {
-                    //または
+                    //かつ
 
                     if (
                       (nowWeight[Weight] === calcR(data["総重量 (kg)"]) ||
                         nowWeight[Weight] === "0") &&
-                      (nowEra[Era] === getColor(data) || nowEra[Era] === "0")
+                      (nowEra[Era] === getColor(data) || nowEra[Era] === "0") &&
+                      (nowClass[Class] === data["分類"] ||
+                        nowClass[Class] === "0")
                     ) {
                       return <circle cx={x} cy={y} r="0.5" fill="black" />;
                     }
@@ -186,6 +211,25 @@ const ChoroplethMap = ({ features }) => {
         </div>
       </div>
     </body>
+  );
+};
+
+const ClassificationBox = (props) => {
+  const change = (event) => {
+    props.setClass(event.target.value);
+  };
+  return (
+    <div class="field">
+      <form>
+        <div class="select is-rounded">
+          <select onChange={change}>
+            <option value="0">分類の選択</option>
+            <option value="1">石質隕石</option>
+            <option value="2">鉄隕石</option>
+          </select>
+        </div>
+      </form>
+    </div>
   );
 };
 
