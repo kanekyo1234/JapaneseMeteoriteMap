@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4ac72ad91cdba95202041f0105c53d3e",
+    "revision": "db6a28179e04d36840b0ee4b77cfaad5",
     "url": "/JapaneseMeteoriteMap/index.html"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/JapaneseMeteoriteMap/static/js/2.2b40f2b9.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "736d0f656299970654eb",
-    "url": "/JapaneseMeteoriteMap/static/js/main.23ce6b14.chunk.js"
+    "revision": "f4819f5652c9a0a527ee",
+    "url": "/JapaneseMeteoriteMap/static/js/main.3529267e.chunk.js"
   },
   {
     "revision": "c0e073b38935390831f9",
