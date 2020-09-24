@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kanekyo1234/SVG-tutorial.git"
+    "url": "git+https://github.com/kanekyo1234/JapaneseMeteoriteMap.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kanekyo1234/SVG-tutorial/issues"
+    "url": "https://github.com/kanekyo1234/JapaneseMeteoriteMap/issues"
   },
-  "homepage": "https://likr.github.io/SVG-tutorial/",
+  "homepage": "https://likr.github.io/JapaneseMeteoriteMap/",
   "dependencies": {
     "bulma": "^0.9.0",
     "d3": "^5.16.0",
