@@ -264,8 +264,8 @@ const NowBox = (props) => {
       <form>
         <div class="select is-rounded">
           <select onChange={change}>
-            <option value="1">かつ</option>
-            <option value="0">または</option>
+            <option value="1">AND検索</option>
+            <option value="0">OR検索</option>
           </select>
         </div>
       </form>
@@ -286,7 +286,7 @@ const WeightBox = (data) => {
             <option value="0"> ~0.5Kg</option>
             <option value="1">0.5~1.0kg</option>
             <option value="2">1kg~</option>
-            <option value="3">???</option>
+            <option value="3">不明</option>
           </select>
         </div>
       </form>
@@ -347,8 +347,8 @@ const Circle = () => {
           :1Kg~
         </text>
         <rect x="470" y="70" width="20" height="20" />
-        <text x="530" y="85" fontSize="20" textAnchor="middle">
-          :　???
+        <text x="525" y="85" fontSize="20" textAnchor="middle">
+          :不明
         </text>
       </g>
       <g transform="translate(50, 100)">
@@ -360,7 +360,7 @@ const Circle = () => {
           cy="80"
           r="10"
           opacity="0.8"
-          fill="red"
+          fill="white"
           style={circleStyle1}
         />
         <text x="130" y="87" fontSize="20" textAnchor="middle">
@@ -371,7 +371,7 @@ const Circle = () => {
           cy="80"
           r="10"
           opacity="0.8"
-          fill="red"
+          fill="white"
           style={circleStyle2}
         />
         <text x="260" y="87" fontSize="20" textAnchor="middle">

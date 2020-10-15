@@ -26,39 +26,41 @@ const TabLink = ({ to, children, exact }) => (
 
 const App = () => {
   return (
-    <Router>
-      <body>
-        <section className="hero is-primary">
-          <div className="hero-body">
-            <h1 className="title">JapaneseMeteorite Map</h1>
-          </div>
+    // <Router>
+    <body bgcolor="#e0ffff">
+      <section className="hero is-primary">
+        <div className="hero-body">
+          <h1 className="title">JapaneseMeteorite Map</h1>
+        </div>
 
-          <div className="hero-foot">
-            <nav className="tabs is- is-fullwidth">
-              <div className="container">
-                <ul>
-                  <TabLink to="/" exact>
+        <div className="hero-foot">
+          <nav className="tabs is- is-fullwidth">
+            <div className="container">
+              <ul>
+                {/* <TabLink to="/" exact>
                     TOP
                   </TabLink>
-                  <TabLink to="/ChoroplethMap">MAP</TabLink>
-                </ul>
-              </div>
-            </nav>
-          </div>
-        </section>
-
-        <div>
-          <Route exact path="/" component={TopPage} />
-          <Route path="/ChoroplethMap" component={ChoroplethMapPage} />
+                  <TabLink to="/ChoroplethMap">MAP</TabLink> */}
+              </ul>
+            </div>
+          </nav>
         </div>
-      </body>
+      </section>
+
+      <div>
+        {/* <Route exact path="/" component={TopPage} /> */}
+        <TopPage />
+        <ChoroplethMapPage />
+        {/* <Route path="/ChoroplethMap" component={ChoroplethMapPage} /> */}
+      </div>
       <br></br>
       <footer className="footer">
         <div className="content has-text-centered">
-          <p>&copy; team-2020-a</p>
+          <p>&copy; 2020 Tatumi Ito , Yuki Hatasa , Kyohei Kaneko</p>
         </div>
       </footer>
-    </Router>
+    </body>
+    // </Router>
   );
 };
 
