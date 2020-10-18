@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/JapaneseMeteoriteMap/precache-manifest.3e74fa3b47bb28a3e5716968cd38893f.js"
+  "/JapaneseMeteoriteMap/precache-manifest.93e98ceb334bbbcf5074a2c7051770ae.js"
 );
 
 self.addEventListener('message', (event) => {

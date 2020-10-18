@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.js": "/JapaneseMeteoriteMap/static/js/main.3529267e.chunk.js",
-    "main.js.map": "/JapaneseMeteoriteMap/static/js/main.3529267e.chunk.js.map",
+    "main.js": "/JapaneseMeteoriteMap/static/js/main.98bdf7a1.chunk.js",
+    "main.js.map": "/JapaneseMeteoriteMap/static/js/main.98bdf7a1.chunk.js.map",
     "runtime-main.js": "/JapaneseMeteoriteMap/static/js/runtime-main.0bf4397b.js",
     "runtime-main.js.map": "/JapaneseMeteoriteMap/static/js/runtime-main.0bf4397b.js.map",
     "static/css/2.0c0672e5.chunk.css": "/JapaneseMeteoriteMap/static/css/2.0c0672e5.chunk.css",
-    "static/js/2.2b40f2b9.chunk.js": "/JapaneseMeteoriteMap/static/js/2.2b40f2b9.chunk.js",
-    "static/js/2.2b40f2b9.chunk.js.map": "/JapaneseMeteoriteMap/static/js/2.2b40f2b9.chunk.js.map",
+    "static/js/2.3384d561.chunk.js": "/JapaneseMeteoriteMap/static/js/2.3384d561.chunk.js",
+    "static/js/2.3384d561.chunk.js.map": "/JapaneseMeteoriteMap/static/js/2.3384d561.chunk.js.map",
     "index.html": "/JapaneseMeteoriteMap/index.html",
-    "precache-manifest.3e74fa3b47bb28a3e5716968cd38893f.js": "/JapaneseMeteoriteMap/precache-manifest.3e74fa3b47bb28a3e5716968cd38893f.js",
+    "precache-manifest.93e98ceb334bbbcf5074a2c7051770ae.js": "/JapaneseMeteoriteMap/precache-manifest.93e98ceb334bbbcf5074a2c7051770ae.js",
     "service-worker.js": "/JapaneseMeteoriteMap/service-worker.js",
     "static/css/2.0c0672e5.chunk.css.map": "/JapaneseMeteoriteMap/static/css/2.0c0672e5.chunk.css.map",
-    "static/js/2.2b40f2b9.chunk.js.LICENSE.txt": "/JapaneseMeteoriteMap/static/js/2.2b40f2b9.chunk.js.LICENSE.txt"
+    "static/js/2.3384d561.chunk.js.LICENSE.txt": "/JapaneseMeteoriteMap/static/js/2.3384d561.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.0bf4397b.js",
     "static/css/2.0c0672e5.chunk.css",
-    "static/js/2.2b40f2b9.chunk.js",
-    "static/js/main.3529267e.chunk.js"
+    "static/js/2.3384d561.chunk.js",
+    "static/js/main.98bdf7a1.chunk.js"
   ]
 }
